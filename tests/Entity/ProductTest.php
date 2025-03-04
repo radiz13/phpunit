@@ -12,19 +12,16 @@ use GuzzleHttp\Client as Guzzle;
 class ProductTest extends TestCase
 {
     public function testExemple()
-        {
-            $response = new Response(200, [], 'Success');
-            $strTest = '';
+    {
+        $response = new Response(200, [], 'Success');
 
-            $client = $this->createMock(Guzzle::class);
-            $client->method('get')->willReturn($response);
+        $client = $this->createMock(Guzzle::class);
+        $client->method('get')->willReturn($response);
 
-            $response = $client->get('https://example.com');
-            $this->assertEquals(200, $response->getStatusCode());
-            $this->assertEquals('Success', (string) $response->getBody());
-        }
-
-
+        $response = $client->get('https://example.com');
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('Success', (string) $response->getBody());
+    }
 
     #[DataProvider('priceTests')]
     public function testComputeTVA(string $pType, int $pPrice, float $result): void
