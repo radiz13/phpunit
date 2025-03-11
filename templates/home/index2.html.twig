@@ -6,15 +6,6 @@
 <div class="container my-5">
     <h1 id="ppp">Hello {{ user_name }} ! 👋</h1>
 
-    <div class="mb-5" {{ stimulus_controller('test') }}>
-        <button data-action="click->test#greet" class="btn btn-primary">click me</button>
-        <div data-test-target="output"></div>
-    </div>
-    <div class="mb-5" {{ stimulus_controller('test') }}>
-        <button data-action="click->test#addBtn" class="btn btn-outline-secondary">Ajouter</button>
-        <div data-test-target="divBtn"></div>
-    </div>
-
     <turbo-frame id="ma-frame">
         <h1>HelloFrame {{ user_name }} ! 👋</h1>
         <div>
@@ -58,19 +49,14 @@
                 Append
             </a>
         </div>
+
+        <turbo-stream action="before" target="ppp">
+            <template>
+                <div class="h1 text-primary">
+                    This div will be appended to the element with the DOM ID "messages".
+                </div>
+            </template>
+        </turbo-stream>
     </turbo-frame>
-    <div class="mt-5">
-        <div class="row">
-            <div class="col-2">
-                <turbo-frame id="ma-frame2" src="{{ path('myApp_pic') }}">
-                    <div class="bg-body-tertiary d-flex justify-content-center align-items-center" style="width: 196px; height: 209px;" role="status">
-{#                        <div class="spinner-border text-secondary" role="status">#}
-{#                        </div>#}
-                        <i class="fs-3 text-secondary bi bi-image-alt"></i>
-                    </div>
-                </turbo-frame>
-            </div>
-        </div>
-    </div>
 </div>
 {% endblock %}

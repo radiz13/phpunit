@@ -1,0 +1,12 @@
+<turbo-stream action="append" target="designs">
+    <template>
+        {% include 'devis/turbo/template.html.twig' with {index: index} %}
+    </template>
+</turbo-stream>
+<turbo-stream action="update" target="designAdd">
+    <template>
+        <a href="{{ path('app_devis_add_design', {index: index+1}) }}" class="btn btn-outline-dark">
+            <i class="bi bi-plus-square me-3"></i>Ajouter une designation+
+        </a>
+    </template>
+</turbo-stream>

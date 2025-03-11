@@ -1,0 +1,8 @@
+<turbo-stream action="remove" target="design_{{ index }}"></turbo-stream>
+<turbo-stream action="update" target="designAdd">
+    <template>
+        <a href="{{ path('app_devis_add_design', {index: index}) }}" class="btn btn-outline-dark">
+            <i class="bi bi-plus-square me-3"></i>Ajouter une designation-
+        </a>
+    </template>
+</turbo-stream>

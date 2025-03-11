@@ -2,7 +2,7 @@
 namespace App\Security;
 use App\Entity\User;
 use GuzzleHttp\Client;
-use JMS\Serializer\Serializer;
+use JMS\Serializer\SerializerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
@@ -11,7 +11,7 @@ class GithubUserProvider implements UserProviderInterface
     private $client;
     private $serializer;
 
-    public function __construct(Client $client, Serializer $serializer)
+    public function __construct(Client $client, SerializerInterface $serializer)
     {
         $this->client = $client;
         $this->serializer = $serializer;
