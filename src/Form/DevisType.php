@@ -22,7 +22,7 @@ class DevisType extends AbstractType
                 'by_reference' => false,
                 'entry_options' => ['label' => false],
                 'attr' => [
-                    'data-controller' => 'form-collection'
+                    'data-controller' => 'form-collection',
                 ]
             ])
         ;

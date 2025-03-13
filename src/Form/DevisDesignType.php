@@ -18,7 +18,7 @@ class DevisDesignType extends AbstractType
             ->add('quantity')
             ->add('product', EntityType::class, [
                 'class' => Product::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
             ])
         ;
     }
