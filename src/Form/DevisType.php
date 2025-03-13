@@ -21,9 +21,9 @@ class DevisType extends AbstractType
                 'allow_delete' => true,
                 'by_reference' => false,
                 'entry_options' => ['label' => false],
-                'attr' => [
-                    'data-controller' => 'form-collection',
-                ]
+//                'attr' => [
+//                    'data-controller' => 'form-collection',
+//                ]
             ])
         ;
     }

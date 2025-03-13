@@ -15,7 +15,7 @@
         </div>
     </div>
 
-{#    {% form_theme form 'devis/_custom_devisDesign.html.twig' %}#}
+    {% form_theme form 'devis/_custom_devisDesign.html.twig' %}
     {{ form_start(form) }}
         {{ form_widget(form) }}
         <button type="submit" class="btn btn-dark mt-3">{{ button_label|default('Save') }}</button>

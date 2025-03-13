@@ -1,0 +1,22 @@
+{% block _devis_designs_widget %}
+    <div data-controller="form-collection"
+         data-form-collection-add-label-value="Ajouter un design"
+         data-form-collection-delete-label-value="Supprimer ce design">
+        {{ form_widget(form) }}
+    </div>
+{% endblock %}
+
+{% block _devis_designs_entry_widget %}
+    <fieldset class="mb-3">
+        <div class="design-item mb-3 p-3 border rounded">
+            <h4>Design</h4>
+            <div class="row">
+                {% for child in form %}
+                    <div class="col-md-6 mb-2">
+                        {{ form_row(child) }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </fieldset>
+{% endblock %}
