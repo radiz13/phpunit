@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: DevisRepository::class)]
 class Devis
 {
+    public function isNew()
+    {
+        return !$this->id;
+    }
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -24,7 +29,7 @@ class Devis
     /**
      * @var Collection<int, DevisDesign>
      */
-    #[ORM\OneToMany(targetEntity: DevisDesign::class, mappedBy: 'devis')]
+    #[ORM\OneToMany(targetEntity: DevisDesign::class, mappedBy: 'devis', cascade: ['persist', 'remove'])]
     private Collection $designs;
 
     public function __construct()

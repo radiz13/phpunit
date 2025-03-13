@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% set strWord = devi.isNew ? 'Create new' : 'Edit' %}
+
+{% block title %}{{ strWord }} devis{% endblock %}
+
+{% block body %}
+    <div class="row mb-5">
+        <div class="col"><h1>{{ strWord }} devis</h1></div>
+        <div class="col-auto">
+            <div class="d-flex">
+                <a class="btn btn-outline-dark me-2" href="{{ path('app_devis_index') }}">Back to list</a>
+                {% if not devi.isNew %}{{ include('devis/_delete_form.html.twig') }}{% endif %}
+            </div>
+        </div>
+    </div>
+
+    {{ include('devis/_form.html.twig', {'button_label': devi.isNew ? 'Save' : 'Update'}) }}
+
+{% endblock %}
+

@@ -1,21 +1,39 @@
 {% extends 'base.html.twig' %}
-{% set strTitle = "Liste des devis" %}
-{% block title %}{{ strTitle }}{% endblock %}
+
+{% block title %}Devis index{% endblock %}
 
 {% block body %}
-    <div class="container my-5">
-        <div class="row d-flex justify-content-center align-items-center">
-            <div class="col"><h1>{{ strTitle }}</h1></div>
-            <div class="col-auto"><a href="{{ path('app_devis_app_devis_new') }}" class="btn btn-outline-dark"><i class="bi bi-plus-square me-3"></i>Ajouter</a></div>
-        </div>
-        <div class="my-3">
-            {% if deviss is defined and deviss %}
-            <table class="table table-striped table-hover">
-
-            </table>
-            {% else %}
-                <div class="text-secondary"><em>Aucun devis pour le moment...</em></div>
-            {% endif %}
-        </div>
+    <div class="row mb-5">
+        <div class="col"><h1>Devis index</h1></div>
+        <div class="col-auto"><a class="btn btn-outline-dark" href="{{ path('app_devis_new') }}">Create new</a></div>
     </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Number</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for devi in devis %}
+            <tr>
+                <td>{{ devi.id }}</td>
+                <td>{{ devi.name }}</td>
+                <td>{{ devi.number }}</td>
+                <td>
+                    <a href="{{ path('app_devis_show', {'id': devi.id}) }}">show</a>
+                    <a href="{{ path('app_devis_edit', {'id': devi.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}

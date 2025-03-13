@@ -17,11 +17,13 @@ class DevisType extends AbstractType
             ->add('number')
             ->add('designs', CollectionType::class, [
                 'entry_type' => DevisDesignType::class,
-                'entry_options' => ['label' => false],
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
-                'label' => false,
+                'entry_options' => ['label' => false],
+                'attr' => [
+                    'data-controller' => 'form-collection'
+                ]
             ])
         ;
     }
