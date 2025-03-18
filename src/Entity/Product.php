@@ -38,6 +38,15 @@ class Product
     #[ORM\Column]
     private ?int $price = null;
 
+    #[ORM\Column]
+    private ?int $taille = null;
+
+    #[ORM\ManyToOne(inversedBy: 'products')]
+    private ?ProductTechno $techno = null;
+
+    #[ORM\ManyToOne(inversedBy: 'products')]
+    private ?ProductMarque $marque = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +84,42 @@ class Product
     public function setPrice(int $price): static
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getTaille(): ?int
+    {
+        return $this->taille;
+    }
+
+    public function setTaille(int $taille): static
+    {
+        $this->taille = $taille;
+
+        return $this;
+    }
+
+    public function getTechno(): ?ProductTechno
+    {
+        return $this->techno;
+    }
+
+    public function setTechno(?ProductTechno $techno): static
+    {
+        $this->techno = $techno;
+
+        return $this;
+    }
+
+    public function getMarque(): ?ProductMarque
+    {
+        return $this->marque;
+    }
+
+    public function setMarque(?ProductMarque $marque): static
+    {
+        $this->marque = $marque;
 
         return $this;
     }

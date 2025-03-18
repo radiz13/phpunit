@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+
+    <div class="row mb-5">
+        <div class="col"><h1>Product index</h1></div>
+        <div class="col-auto">
+            <a class="btn btn-outline-dark" href="{{ path('app_product_new') }}">Create new</a>
+            {% set classBtnActive = filterCount == 0 ? 'outline-' : '' %}
+            {% set strCount = filterCount  == 0 ? '' : ' ('~filterCount~')' %}
+            <button class="btn btn-{{ classBtnActive }}dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#ocFilter" aria-controls="ocFilter"><i class="bi bi-filter"></i>{{ strCount }}</button>
+        </div>
+    </div>
+
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+{#                <th>Id</th>#}
+                <th>Name</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Taille</th>
+{#                <th>actions</th>#}
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+{#                    <td>{{ product.id }}</td>#}
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.type }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.taille }}</td>
+{#                    <td>#}
+{#                        <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>#}
+{#                        <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>#}
+{#                    </td>#}
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div {{ stimulus_controller('canvas-filter', {hasErrors: hasErrors}) }} class="offcanvas offcanvas-end" tabindex="-1" id="ocFilter" aria-labelledby="ocFilterLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="ocFilterLabel">Filtrer</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            {{ form_start(formFilter) }}
+            {{ form_widget(formFilter) }}
+            <button type="submit" class="btn btn-dark mt-3">{{ button_label|default('Search') }}</button>
+            <a href="{{ path('app_product_index') }}" class="btn btn-dark mt-3">Reset</a>
+            {{ form_end(formFilter) }}
+        </div>
+    </div>
+{% endblock %}

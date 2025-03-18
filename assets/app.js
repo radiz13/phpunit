@@ -6,6 +6,8 @@ import './bootstrap.js';
  * which should already be in your base.html.twig.
  */
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap'
+
 import './styles/app.css';
 import 'bootstrap-icons/font/bootstrap-icons.min.css'
 import 'tom-select/dist/css/tom-select.default.css'
